@@ -1,0 +1,181 @@
+/**
+ * VibeAI FoldSpace - Overlay Styles v1.1.0
+ * Global styles for tone overlays and UI components
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TONE OVERLAY ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes vibeai-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.vibeai-overlay {
+  animation: vibeai-pulse 2s ease-in-out infinite;
+}
+
+.vibeai-tooltip {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CODE BLOCK HIGHLIGHTING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-vibeai-code="true"] {
+  position: relative;
+}
+
+[data-vibeai-code="true"]::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #66b3ff, #3a3a8a);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FLOATING ACTION BUTTON
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#vibeai-fab:hover {
+  filter: brightness(1.2);
+}
+
+#vibeai-fab:active {
+  transform: scale(0.95) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SETTINGS PANEL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#vibeai-settings-panel {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#vibeai-settings-panel input[type="checkbox"] {
+  accent-color: #66b3ff;
+}
+
+#vibeai-settings-panel button {
+  transition: all 0.2s ease;
+}
+
+#vibeai-settings-panel button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+#vibeai-settings-panel button:active {
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONSENT MODAL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#vibeai-consent-modal {
+  backdrop-filter: blur(4px);
+}
+
+#vibeai-consent-modal button {
+  transition: all 0.2s ease;
+}
+
+#vibeai-consent-modal button:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+#vibeai-consent-modal button:active {
+  transform: scale(0.98);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FOLDSPACE CANVAS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#vibeai-foldspace-canvas {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE ADJUSTMENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  #vibeai-settings-panel > div {
+    min-width: 260px !important;
+    padding: 15px !important;
+  }
+
+  #vibeai-fab {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 20px !important;
+    bottom: 15px !important;
+    right: 15px !important;
+  }
+
+  .vibeai-tooltip {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE COMPATIBILITY
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: dark) {
+  .vibeai-overlay {
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .vibeai-overlay {
+    opacity: 0.5;
+  }
+
+  #vibeai-foldspace-canvas {
+    opacity: 0.2 !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PLATFORM-SPECIFIC ADJUSTMENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ChatGPT */
+body[data-vibeai-platform="chatgpt"] .vibeai-overlay {
+  right: 8px;
+}
+
+/* Claude */
+body[data-vibeai-platform="claude"] .vibeai-overlay {
+  right: 12px;
+}
+
+/* Gemini */
+body[data-vibeai-platform="gemini"] .vibeai-overlay {
+  right: 10px;
+}
+
+/* Copilot */
+body[data-vibeai-platform="copilot"] .vibeai-overlay {
+  right: 8px;
+}
