@@ -181,7 +181,8 @@
     <header>
       <h1>VibeAI FoldSpace – Privacy Policy</h1>
       <div class="meta"><strong>Effective Date:</strong> October 4, 2025</div>
-      <div class="meta"><strong>Version:</strong> 1.0.9 Beta</div>
+      <div class="meta"><strong>Last Updated:</strong> October 5, 2025</div>
+      <div class="meta"><strong>Version:</strong> 1.1.0 Beta</div>
       <div class="meta"><strong>Developer:</strong> Hugonomy Systems</div>
     </header>
 
@@ -194,20 +195,31 @@
       <h2>What Data We Access</h2>
       <p>VibeAI FoldSpace is a browser extension that enhances your experience on AI chat platforms (ChatGPT, Claude, Gemini, Microsoft Copilot). To provide its functionality, the extension accesses:</p>
       <ol>
-        <li><strong>Visible Chat Titles</strong> — Read-only access to conversation titles displayed in the platform's sidebar</li>
+        <li><strong>Visible Chat Content</strong> — FoldSpace analyzes only on-screen messages in your active chat view to render emotional tone and code overlays</li>
         <li><strong>Page Metadata</strong> — Current URL and page title to detect which platform you're using</li>
         <li><strong>DOM Content</strong> — Visual elements on the page to inject the VibeAI overlay interface</li>
       </ol>
+      <div class="highlight-box">
+        <h3>Local Processing Only</h3>
+        <p><strong>All analysis occurs inside your browser.</strong> No message content is transmitted or stored externally. The extension reads visible messages purely for real-time, in-memory tone analysis and code detection.</p>
+      </div>
+      <h3>No History Access</h3>
+      <p>Past or hidden conversations are <strong>never accessed</strong>. Only messages currently visible on your screen are processed, and only while you're actively viewing that thread.</p>
 
       <h2>What Data We Store</h2>
       <p>All data storage is <strong>local to your browser</strong>:</p>
 
       <h3>Chrome Storage (Synced Across Your Chrome Profile)</h3>
       <ul>
-        <li><strong>UI Theme Preference</strong> (dark/light mode)</li>
-        <li><strong>Sensitivity Settings</strong> (emotion detection threshold)</li>
-        <li><strong>Interface Position</strong> (where you last positioned the overlay)</li>
+        <li><strong>Thread Analysis Toggle</strong> (enable/disable tone analysis)</li>
+        <li><strong>Canvas Toggle</strong> (enable/disable FoldSpace visual overlay)</li>
         <li><strong>Beta Consent Status</strong> (whether you accepted the beta agreement)</li>
+      </ul>
+
+      <h3>Temporary In-Memory State</h3>
+      <ul>
+        <li><strong>Tone Visualization Data</strong> — Calculated tone scores exist only while messages are visible, cleared when you navigate away</li>
+        <li><strong>No Persistent Message Storage</strong> — Message content is never saved to disk or Chrome storage</li>
       </ul>
 
       <h3>No External Storage</h3>
@@ -220,11 +232,12 @@
 
       <h2>What We Do NOT Collect</h2>
       <ul>
-        <li>❌ Conversation content or chat messages</li>
+        <li>❌ Conversation content or chat messages (read for analysis, never stored or transmitted)</li>
         <li>❌ Personal identifying information (name, email, IP address)</li>
         <li>❌ Browsing history outside the supported platforms</li>
         <li>❌ API keys, passwords, or authentication tokens</li>
         <li>❌ Usage analytics or behavioral tracking data</li>
+        <li>❌ Historical or archived conversations</li>
       </ul>
 
       <h2>Data Sharing</h2>
@@ -321,8 +334,8 @@
 
       <hr>
 
-      <p><strong>Last Updated:</strong> October 4, 2025<br>
-      <strong>Version:</strong> 1.0.9 Beta</p>
+      <p><strong>Last Updated:</strong> October 5, 2025<br>
+      <strong>Version:</strong> 1.1.0 Beta</p>
     </main>
 
     <footer>
@@ -332,5 +345,12 @@
       <a href="https://github.com/hugonomy/vibeai-foldspace" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     </footer>
   </div>
+  <p style="margin-top: 16px; font-size: 13px; color: #888; text-align: center;">
+    For feedback or privacy concerns, contact
+    <a href="mailto:hugonomysystems@gmail.com"
+       style="color: #66b3ff; text-decoration: underline;">
+       hugonomysystems@gmail.com
+    </a>.
+  </p>
 </body>
 </html>
