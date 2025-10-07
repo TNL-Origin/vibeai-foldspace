@@ -26,8 +26,43 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   TONE OVERLAY HIGHLIGHTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.vibeai-tone-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  z-index: 0;
+}
+
+/* Ensure message content stays above overlay */
+.vibeai-tone-overlay ~ * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    CODE BLOCK HIGHLIGHTING
    ═══════════════════════════════════════════════════════════════════════════ */
+
+.vibeai-code-highlighted {
+  position: relative;
+  border-left: 3px solid rgba(102, 179, 255, 0.7) !important;
+  padding-left: 8px !important;
+  background: rgba(102, 179, 255, 0.05) !important;
+  transition: all 0.3s ease;
+}
+
+.vibeai-code-highlighted:hover {
+  border-left-color: rgba(102, 179, 255, 1) !important;
+  background: rgba(102, 179, 255, 0.1) !important;
+}
 
 [data-vibeai-code="true"] {
   position: relative;
@@ -84,24 +119,323 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   CONSENT MODAL
+   CONSENT MODAL (PAGE-WIDE BLOCKER)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 #vibeai-consent-modal {
-  backdrop-filter: blur(4px);
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2147483647;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 }
 
-#vibeai-consent-modal button {
+.vibeai-consent-card {
+  max-width: 520px;
+  width: 90%;
+  background: linear-gradient(135deg, #1e1e2e, #2a2a4a);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+  color: #eee;
+}
+
+.vibeai-consent-card h2 {
+  color: #66b3ff;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.vibeai-consent-card h4 {
+  color: #88c0ff;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.vibeai-consent-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 12px;
+  margin-bottom: 20px;
+}
+
+.vibeai-consent-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.vibeai-consent-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.vibeai-consent-scroll::-webkit-scrollbar-thumb {
+  background: rgba(102, 179, 255, 0.5);
+  border-radius: 4px;
+}
+
+.vibeai-consent-scroll ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.vibeai-consent-scroll li {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.vibeai-link {
+  color: #66b3ff;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.vibeai-link:hover {
+  color: #88c0ff;
+}
+
+.vibeai-consent-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.vibeai-consent-check input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #66b3ff;
+}
+
+.vibeai-consent-check span {
+  flex: 1;
+  font-size: 14px;
+}
+
+#vibeai-consent-accept {
+  width: 100%;
+  padding: 12px;
+  background: #66b3ff;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#vibeai-consent-accept:disabled {
+  background: rgba(102, 179, 255, 0.3);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#vibeai-consent-accept:not(:disabled):hover {
+  background: #88c0ff;
+  transform: scale(1.02);
+}
+
+#vibeai-consent-accept:active {
+  transform: scale(0.98);
+}
+
+/* OLD CONSENT MODAL STYLES - DEPRECATED, KEPT FOR COMPATIBILITY */
+.consent-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.consent-modal-content {
+  background: linear-gradient(135deg, #1e1e2e, #2a2a4a);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 600px;
+  max-height: 80vh;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+  color: #eee;
+  position: relative;
+}
+
+.consent-scroll-area {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 12px;
+  margin-bottom: 16px;
+}
+
+.consent-scroll-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.consent-scroll-area::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.consent-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(102, 179, 255, 0.5);
+  border-radius: 4px;
+}
+
+.consent-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 179, 255, 0.7);
+}
+
+.consent-scroll-area h3 {
+  color: #66b3ff;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.consent-scroll-area h4 {
+  color: #88c0ff;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.consent-scroll-area ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.consent-scroll-area li {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.consent-scroll-area a {
+  color: #66b3ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.consent-scroll-area a:hover {
+  color: #88c0ff;
+}
+
+.consent-scroll-hint {
+  text-align: center;
+  color: #66b3ff;
+  font-size: 13px;
+  opacity: 0;
+  margin: 12px 0;
+  animation: consent-hint-fade-in 1s ease-in-out forwards;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes consent-hint-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.consent-modal button {
   transition: all 0.2s ease;
 }
 
-#vibeai-consent-modal button:hover {
+.consent-modal button:not(:disabled):hover {
   filter: brightness(1.1);
   transform: scale(1.02);
 }
 
-#vibeai-consent-modal button:active {
+.consent-modal button:active {
   transform: scale(0.98);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   METRICS PANEL (IN-CHAT)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#vibeai-metrics-panel {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 220px;
+  background: linear-gradient(135deg, rgba(30, 30, 46, 0.95), rgba(58, 58, 138, 0.95));
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 9997;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: #eee;
+  cursor: grab;
+  user-select: none;
+}
+
+#vibeai-metrics-panel:active {
+  cursor: grabbing;
+}
+
+.metrics-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: rgba(102, 179, 255, 0.1);
+  border-bottom: 1px solid rgba(102, 179, 255, 0.2);
+  border-radius: 12px 12px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #66b3ff;
+}
+
+.metrics-close-btn {
+  background: none;
+  border: none;
+  color: #eee;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  transition: color 0.2s;
+}
+
+.metrics-close-btn:hover {
+  color: #f87171;
+}
+
+.metrics-panel-body {
+  padding: 12px 14px;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.metric-row span:first-child {
+  color: #aaa;
+}
+
+.metric-row span:last-child {
+  color: #66b3ff;
+  font-weight: 600;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

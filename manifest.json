@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "VibeAI FoldSpace",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Local-only emotional tone and code analysis overlay for AI chat platforms. Privacy-first.",
   "permissions": ["activeTab", "storage"],
   "background": {
@@ -39,7 +39,6 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "scripts/overlay.js",
         "styles/*.css",
         "docs/*.html"
       ],

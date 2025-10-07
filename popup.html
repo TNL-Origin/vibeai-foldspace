@@ -12,7 +12,7 @@
     }
 
     body {
-      width: 320px;
+      width: 360px;
       font-family: "Inter", "Segoe UI", Arial, sans-serif;
       background: linear-gradient(135deg, #1e1e2e, #3a3a8a);
       color: #eee;
@@ -50,6 +50,93 @@
       line-height: 1.5;
     }
 
+    .metrics {
+      background: rgba(74, 222, 128, 0.1);
+      border-left: 3px solid #4ade80;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+
+    .metrics h3 {
+      font-size: 1em;
+      margin-bottom: 10px;
+      color: #4ade80;
+    }
+
+    .metrics ul {
+      list-style: none;
+      font-size: 0.85em;
+      line-height: 1.8;
+    }
+
+    .metrics li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .metrics span {
+      color: #66b3ff;
+      font-weight: 600;
+    }
+
+    .toggle-container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toggle-container label {
+      font-size: 0.9em;
+      cursor: pointer;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle-switch input {
+      display: none;
+    }
+
+    .toggle-switch .slider {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .toggle-switch input:checked + .slider {
+      transform: translateX(24px);
+    }
+
+    .toggle-switch input:checked ~ .toggle-switch {
+      background: #66b3ff;
+    }
+
+    input:checked + .slider {
+      transform: translateX(24px);
+    }
+
+    .toggle-container input:checked ~ .toggle-switch {
+      background: #66b3ff;
+    }
+
     .links {
       display: flex;
       flex-direction: column;
@@ -83,22 +170,42 @@
 </head>
 <body>
   <h1>VibeAI FoldSpace</h1>
-  <div class="version">Version 1.1.0 Beta</div>
+  <div class="version">Version 1.1.2 Beta</div>
 
   <div class="status">
     <h3>Beta Status: Active</h3>
     <p>Expires: November 15, 2025</p>
   </div>
 
+  <div class="metrics">
+    <h3>📊 Real-Time Metrics</h3>
+    <ul>
+      <li>Platform Detected: <span id="platform-name">—</span></li>
+      <li>Messages Analyzed: <span id="msg-count">0</span></li>
+      <li>Average Tone Score: <span id="avg-tone">—</span></li>
+      <li>Observer Status: <span id="observer-status">Inactive</span></li>
+    </ul>
+  </div>
+
+  <div class="toggle-container">
+    <label for="show-metrics-toggle">Show Metrics Panel in Chat</label>
+    <div class="toggle-switch">
+      <input type="checkbox" id="show-metrics-toggle">
+      <div class="slider"></div>
+    </div>
+  </div>
+
   <div class="links">
     <a href="docs/index.html" target="_blank">📄 Documentation</a>
     <a href="docs/privacy.html" target="_blank">🔒 Privacy Policy</a>
     <a href="docs/beta-agreement.html" target="_blank">📋 Beta Agreement</a>
-    <a href="https://github.com/hugonomy/vibeai-foldspace" target="_blank">💻 GitHub Repository</a>
+    <a href="https://github.com/TNL-Origin/vibeai-foldspace" target="_blank">💻 GitHub Repository</a>
   </div>
 
   <footer>
     © 2025 Hugonomy Systems
   </footer>
+
+  <script src="scripts/metrics.js"></script>
 </body>
 </html>
